@@ -1,7 +1,3 @@
-# BUILD:  docker build -t docker-bourne .
-# RUN:    docker run --user kuba -it --security-opt seccomp=unconfined -v /Users/kuba/kuba/type_list:/home/kuba/src -v /Users/kuba/type_list_build:/home/kuba/build docker-kuba
-# WINDOWS: winpty docker run --user kuba -it -v //c//Users//User//bourne:/home/kuba/src docker-bourne
-
 FROM ubuntu:23.04
 
 RUN apt-get -y update && apt-get install -y \
