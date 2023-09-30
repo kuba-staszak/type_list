@@ -112,7 +112,7 @@ namespace test_is_unique
     using UList1 = UniqueList<List1>;
 
     // Won't compile
-    // using UList2 = UniqueList<List2>; 
+    // using UList2 = UniqueList<List2>;
 
 }
 
@@ -483,26 +483,40 @@ namespace test_find_if_else
 
 namespace test_all_of_combinations
 {
-    using List1 = type_list<int, int, int, void>;
-    constexpr auto Expected1 = false;
-    constexpr auto Result1 = type_list_all_of_combinations_v<List1, 2, std::is_same>;
-    static_assert(Result1 == Expected1);
+    template<template<typename, std::size_t, template<typename, typename> typename> typename Func>
+    struct tester {
+        using List1 = type_list<int, int, int, void>;
+        static constexpr auto Expected1 = false;
+        static constexpr auto Result1 = Func<List1, 2, std::is_same>::value;
+        static_assert(Result1 == Expected1);
 
-    using List2 = type_list<int, int, int, int>;
-    constexpr auto Expected2 = true;
-    constexpr auto Result2 = type_list_all_of_combinations_v<List2, 2, std::is_same>;
-    static_assert(Result2 == Expected2);
+        using List2 = type_list<int, int, int, int>;
+        static constexpr auto Expected2 = true;
+        static constexpr auto Result2 = Func<List2, 2, std::is_same>::value;
+        static_assert(Result2 == Expected2);
 
-    using List3 = type_list<int>;
-    constexpr auto Expected3 = true;
-    constexpr auto Result3 = type_list_all_of_combinations_v<List3, 2, std::is_same>;
-    static_assert(Result3 == Expected3);
+        using List3 = type_list<int>;
+        static constexpr auto Expected3 = true;
+        static constexpr auto Result3 = Func<List3, 2, std::is_same>::value;
+        static_assert(Result3 == Expected3);
 
-    using List4 = type_list<>;
-    constexpr auto Expected4 = true;
-    constexpr auto Result4 = type_list_all_of_combinations_v<List4, 2, std::is_same>;
-    static_assert(Result4 == Expected4);
-}
+        using List4 = type_list<>;
+        static constexpr auto Expected4 = true;
+        static constexpr auto Result4 = Func<List4, 2, std::is_same>::value;
+        static_assert(Result4 == Expected4);
+    };
+
+    template<any_type_list List, std::size_t K, template<typename, typename> typename Predicate>
+    struct type_list_combinations_all_of
+    : std::bool_constant<
+        List::template combinations<K>
+            ::template all_of<applied_type_list<Predicate>::template type>
+    >
+    {};
+
+    template struct tester<type_list_all_of_combinations>;
+    template struct tester<type_list_combinations_all_of>;
+};
 
 namespace test_replace
 {
