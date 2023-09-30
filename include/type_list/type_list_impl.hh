@@ -3,7 +3,7 @@
 #include "type_list_hdr.hh"
 #include <utility>
 
-namespace kuba
+namespace tn
 {
 
 namespace impl
@@ -1063,4 +1063,4 @@ using type_list_replace_t = typename type_list_replace<List, OldType, NewType>::
 
 
 
-} // end namespace kuba
+} // end namespace tn

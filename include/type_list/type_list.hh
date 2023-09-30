@@ -3,7 +3,7 @@
 #include "type_list_hdr.hh"
 #include "type_list_impl.hh"
 
-namespace kuba
+namespace tn
 {
 
 template<typename... Ts>
@@ -155,4 +155,4 @@ struct type_list
 template<typename TypeList, template<typename>typename Predicate>
 concept any_type_list_of = is_type_list_v<TypeList> && type_list_all_of_v<TypeList, Predicate>;
 
-}
+} // end namespace tn

@@ -2,7 +2,7 @@
 
 #include "type_list.hh"
 
-namespace kuba
+namespace tn
 {
 
 namespace impl
@@ -34,11 +34,6 @@ using iota_type_list_t = typename iota_type_list<T, End>::type;
 
 
 
-
-
-
-
-
 template< template<typename...> class T >
 struct applied_type_list
 {
@@ -57,6 +52,4 @@ using extract_type_list = impl::extract_type_list<T>;
 template<typename T>
 using extract_type_list_t = typename extract_type_list<T>::type;
 
-
-
-}
+} // end namespace tn

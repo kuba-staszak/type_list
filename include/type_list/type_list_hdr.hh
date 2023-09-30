@@ -2,7 +2,7 @@
 
 #include <type_traits>
 
-namespace kuba
+namespace tn
 {
 
 template<typename... Ts>
@@ -20,4 +20,4 @@ inline constexpr auto is_type_list_v = is_type_list<T>::value;
 template<typename T>
 concept any_type_list = is_type_list_v<T>;
 
-}
+} // end namespace tn

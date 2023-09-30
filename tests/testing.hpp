@@ -6,7 +6,7 @@
 #include <type_list/type_list.hh>
 #include <type_list/type_list_utilities.hh>
 
-namespace kuba
+namespace tn
 {
 
 namespace testing
