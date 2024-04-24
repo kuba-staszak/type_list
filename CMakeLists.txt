@@ -16,7 +16,7 @@ set(CMAKE_TEST_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -pedantic -Wextra")
 
-set(INCLUDE_FOLDER "include/type_list")
+set(INCLUDE_FOLDER "include/tn/_type_list/")
 set(CMAKE_CXX_STANDARD 20)
 
 add_library_checked_headers(

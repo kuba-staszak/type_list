@@ -3,8 +3,7 @@
 #include <string>
 #include <optional>
 
-#include <type_list/type_list.hh>
-#include <type_list/type_list_utilities.hh>
+#include <tn/type_list>
 
 namespace tn
 {
